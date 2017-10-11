@@ -1,0 +1,13 @@
+city,state,lat,lon,capacity
+Cambridge,MA,42.3736,71.1097,4
+Houston,TX,29.7406,95.3698,6
+Bismark,ND,46.8083,100.7837,2
+Detroit,MI,42.3314,83.0458,3
+Orlando,FL,28.5383,81.3792,1
+San Francisco,CA,37.7749,122.4194,2
+Los Angeles,CA,34.0522,118.2437,2
+Davidson,NC,35.4993,80.8487,1
+Phoenix,AZ,33.4484,112.074,5
+Boulder,CO,40.015,105.2705,2
+Anchorage,AK,61.2181,149.9003,1
+Honolulu,HI,21.3069,157.8583,3
