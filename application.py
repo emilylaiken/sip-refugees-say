@@ -12,12 +12,11 @@ def index():
 
 @app.route("/map")
 def map():
-	# read sites CSV into pandas dataframe
 	sites = pd.read_csv('data/sites.csv')
 	cases = pd.read_csv('data/cases.csv')
 	output = pd.read_csv('data/output.csv')
 
-
+  # Call helpers functions refugeesInfo and getFromCommunity here
 
 	# pass two dataframes to front end
 	return render_template("map.html", sites=sites.to_html(), cases=cases.to_html())
