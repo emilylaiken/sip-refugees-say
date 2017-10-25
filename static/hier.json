@@ -1,0 +1,112 @@
+{
+ "name": "flare",
+ "children": [
+  {
+   "name": "West",
+   "children": [
+    {
+     "name": "Los Angeles, CA",
+     "children": [
+      {"name": "Fred", "size": 3938}
+     ]
+    },
+    {
+     "name": "Boulder, CO",
+     "children": [
+      {"name": "Jenny", "size": 3534},
+      {"name": "Alex", "size": 5731}
+     ]
+    },
+    {
+     "name": "Portland, OR",
+     "children": [
+     ]
+    }
+   ]
+  },
+  {
+   "name": "South/Central",
+   "children": [
+    {
+     "name": "Phoenix, AZ",
+     "children": [
+      {"name": "Joe", "size": 1983},
+      {"name": "Maurice", "size": 2047},
+      {"name": "Alice", "size": 1375}
+     ]
+    },
+    {
+     "name": "Dallas, TX",
+     "children": [
+     ]
+    },
+    {
+     "name": "Nashville, TN",
+     "children": [
+      {"name": "George", "size": 1983}
+     ]
+    },
+    {
+     "name": "Tulsa, OK",
+     "children": [
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Southeast",
+   "children": [
+    {
+     "name": "New Orleans, LA",
+     "children": [
+      {"name": "Sarah", "size": 721},
+      {"name": "Jonas", "size": 4294}
+     ]
+    },
+    {
+     "name": "Atlanta, GA",
+     "children": [
+      {"name": "Janice", "size": 721}
+     ]
+    },
+    {
+     "name": "Atlanta, GA",
+     "children": [
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Northeast",
+   "children": [
+    {
+     "name": "Chicago, IL",
+     "children": [
+      {"name": "Laura", "size": 721}
+     ]
+    },
+    {
+     "name": "New York, NY",
+     "children": [
+      {"name": "Anna", "size": 721}
+     ]
+    },
+    {
+     "name": "Boston, MA",
+     "children": [
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Other",
+   "children": [
+    {
+     "name": "Honolulu, HI",
+     "children": [
+     ]
+    }
+   ]
+  }
+ ]
+}
