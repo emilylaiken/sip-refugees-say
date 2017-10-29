@@ -37,7 +37,7 @@
                             {% else %}
                                 <div class="column left">
                             {% endif %}
-                            <li class="unsortable-item"> {{ key }} </li>
+                            <li class="unsortable-item"> {{ key[1] }}, {{ key[0] }} </li>
                                 <ul class="sortable-list">
                                     {% for case in value %}
                                         <li class="sortable-item">{{case}}</li>
