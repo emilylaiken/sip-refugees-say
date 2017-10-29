@@ -6,31 +6,39 @@
         <link rel="stylesheet" type="text/css" href="static/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="static/examples.css" media="screen" />
     </head>
-    <body class="body">
+    <body class="dhe-body">
         <div id="center-wrapper">
-            <div id="header_info">
-                <h1 class="header">Algorithm Results</h1>
+            <div id="dhe-article-info">
+                <h1 class="dhe-h1">Algorithm Results</h1>
+                    <div class="dhe-clearer">&nbsp;</div>
+                </div>
             </div>
-
-            <div class="main_content">
-                <div id="visualization">
-                    {% for key, value in communities.items() %}
-                        <div class="column left">
-                            <li class="unsortable-item">
-                                {{ key[1] }}, {{ key[0] }}
-                            </li>
-                            <ul class="sortable-list">
-                                {% for case in value %}
-                                    <li class="sortable-item"> {{case}} </li>
-                                {% endfor %}
-                            </ul>
-                        </div>
-                    {% endfor %}
-                    <div class="clearer">&nbsp;</div>
+            <div class="dhe-example-section" id="ex-1-2">
+                <div class="dhe-example-section-header">
+                    <h3 class="dhe-h3 dhe-example-title">Example 1.2: Sortable and connectable lists</h3>
+                    <div class="dhe-example-description">Drag and drop items within and between lists.</div>
+                </div>
+                <div class="dhe-example-descriptione-section-content">
+                    <div id="example-1-2">
+                        {% for key, value in communities.items() %}
+                            {% if key == 'Los Angeles' %}
+                                <div class="column left first">
+                            {% else %}
+                                <div class="column left">
+                            {% endif %}
+                            <li class="unsortable-item"> {{ key[1] }}, {{ key[0] }} </li>
+                                <ul class="sortable-list">
+                                    {% for case in value %}
+                                        <li class="sortable-item">{{case}}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% endfor %}
+                        <div class="clearer">&nbsp;</div>
+                    </div>
                 </div>
             </div>
         </div>
-
         <script type="text/javascript" src="static/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="static/jquery-ui-1.8.custom.min.js"></script>
         <script type="text/javascript">
@@ -40,6 +48,7 @@
             		connectWith: '#example-1-2 .sortable-list'
             	});
             });
+
         </script>
     </body>
 </html>
