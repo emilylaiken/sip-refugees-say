@@ -7,11 +7,12 @@
     </head>
 
     <body>
-        <p> map visualization is going to go here! </p>
-        <p> sites: </p>
-        {{ sites | safe }}
-        <p> cases: </p>
-        {{ cases | safe }}
+        {% for key, value in communities.items() %}
+            <h5>Community: {{key}}</h5>
+            {% for case in value %}
+                <p> {{case}} </p>
+            {% endfor %}
+        {% endfor %}
     </body>
 
 </html>

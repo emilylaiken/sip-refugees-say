@@ -43,3 +43,15 @@ def listOfRefugees(city):
         if refugeesInfo(name)['community'] == city:
             refList.append(refugeesInfo(name))
     return refList
+
+def assign_case(groupName):
+    if refugeesInfo(groupName) is None:
+        return None
+    else:
+        return listOfCommunities[np.ranodm.rand*len(listOfCommunities)]['city']
+
+
+
+
+
+
