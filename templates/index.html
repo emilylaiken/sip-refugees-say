@@ -1,55 +1,36 @@
-<!-- Fromm https://devheart.org/examples/jquery-customizable-layout-using-drag-and-drop/1-getting-started-with-sortable-lists/index.html --> 
+<!-- Fromm https://devheart.org/examples/jquery-customizable-layout-using-drag-and-drop/1-getting-started-with-sortable-lists/index.html -->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>jQuery: Customizable layout using drag and drop (examples) - 1. Getting started with sortable lists</title>
+        <title>Refugees' Say</title>
         <link rel="stylesheet" type="text/css" href="static/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="static/examples.css" media="screen" />
     </head>
-    <body class="dhe-body">
+    <body class="body">
         <div id="center-wrapper">
-            <div id="dhe-article-info">
-                <h1 class="dhe-h1">jQuery: Customizable layout using drag and drop (examples)</h1>
-                <div id="dhe-step-navigation">
-                    <div class="dhe-left" id="dhe-step-dropdown-wrapper">
-                        <select onchange="window.location=this.options[selectedIndex].value" class="dhe-select" id="dhe-step-dropdown">
-                            <option value="../1-getting-started-with-sortable-lists/index.html" selected="selected">1. Getting started with sortable lists</option>
-                            <option value="../2-saving-and-loading-items/index.html">2. Saving and loading items</option>
-                            <option value="../3-implementation-in-a-real-design/index.html">3. Implementation in a real design</option>
-                        </select>
-                    </div>
-                    <div class="dhe-right">
-                        <a href="#" class="dhe-link">Export as CSV &raquo;</a>
-                    </div>
-                    <div class="dhe-clearer">&nbsp;</div>
-                </div>
+            <div id="header_info">
+                <h1 class="header">Algorithm Results</h1>
             </div>
-            <div class="dhe-example-section" id="ex-1-2">
-                <div class="dhe-example-section-header">
-                    <h3 class="dhe-h3 dhe-example-title">Example 1.2: Sortable and connectable lists</h3>
-                    <div class="dhe-example-description">Drag and drop items within and between lists.</div>
-                </div>
-                <div class="dhe-example-descriptione-section-content">
-                    <div id="example-1-2">
-                        {% for key, value in communities.items() %}    
-                            {% if key == 'Los Angeles' %}
-                                <div class="column left first">
-                            {% else %}
-                                <div class="column left">
-                            {% endif %}
-                            <li class="unsortable-item"> {{ key[1] }}, {{ key[0] }} </li>
-                                <ul class="sortable-list">
-                                    {% for case in value %}
-                                        <li class="sortable-item">{{case}}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endfor %}
-                        <div class="clearer">&nbsp;</div>
-                    </div>
+
+            <div class="main_content">
+                <div id="visualization">
+                    {% for key, value in communities.items() %}
+                        <div class="column left">
+                            <li class="unsortable-item">
+                                {{ key[1] }}, {{ key[0] }}
+                            </li>
+                            <ul class="sortable-list">
+                                {% for case in value %}
+                                    <li class="sortable-item"> {{case}} </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                    <div class="clearer">&nbsp;</div>
                 </div>
             </div>
         </div>
+
         <script type="text/javascript" src="static/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="static/jquery-ui-1.8.custom.min.js"></script>
         <script type="text/javascript">
@@ -59,7 +40,6 @@
             		connectWith: '#example-1-2 .sortable-list'
             	});
             });
-            
         </script>
     </body>
 </html>
