@@ -42,6 +42,16 @@
     padding: 20px 0;
     text-align: center;
 }
+.unsortable-item {
+    background-color: #FFF;
+    border: 1px solid #000;
+    cursor: move;
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 20px 0;
+    text-align: center;
+}
 #containment {
     background-color: #FFA;
     height: 230px;
