@@ -10,19 +10,23 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-	cases = ['Chandler', 'Monica', 'Ross', 'Rachel', 'Joey', 'Phoebe']
-	communities = ['Los Angeles', 'Phoenix', 'Chicago']
-	def assign_case(groupName):
-		return communities[np.random.randint(0, len(communities))]
-	# Make assignments, keep lists by community
-	assignments_by_community = {}
-	for community in communities:
-		assignments_by_community[community] = []
-	for case in cases:
-		community = assign_case(case)
-		assignments_by_community[community].append(case)
-	# pass two dataframes to front end
-	return render_template('index.html', communities=assignments_by_community)
+  sites_df = pd.read_csv('data/sites.csv')
+  cases_df = pd.read_csv('data/cases.csv')
+  output_df = pd.read_csv('data/output.csv')
+
+  cases = cases_df['name']
+  communities = list(zip(sites_df['state'].values.tolist(),sites_df['city'].values.tolist()))
+  def assign_case(groupName):
+    return communities[np.random.randint(0, len(communities))]
+  # Make assignments, keep lists by community
+  assignments_by_community = {}
+  for community in communities:
+    assignments_by_community[community] = []
+  for case in cases:
+    community = assign_case(case)
+    assignments_by_community[community].append(case)
+  # pass two dataframes to front end
+  return render_template('index.html', communities=assignments_by_community)
 
 
 # Run application

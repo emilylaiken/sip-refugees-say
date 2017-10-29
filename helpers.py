@@ -50,7 +50,11 @@ def assign_case(groupName):
     else:
         return listOfCommunities[np.ranodm.rand*len(listOfCommunities)]['city']
 
+def main():
+    print(list(zip(sites['state'].values.tolist(),sites['city'].values.tolist())))
 
+if __name__ == '__main__':
+    main()
 
 
 
