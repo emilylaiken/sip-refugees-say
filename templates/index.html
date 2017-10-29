@@ -29,7 +29,7 @@
                     <h3 class="dhe-h3 dhe-example-title">Example 1.2: Sortable and connectable lists</h3>
                     <div class="dhe-example-description">Drag and drop items within and between lists.</div>
                 </div>
-                <div class="dhe-example-section-content">
+                <div class="dhe-example-descriptione-section-content">
                     <div id="example-1-2">
                         {% for key, value in communities.items() %}    
                             {% if key == 'Los Angeles' %}
@@ -37,6 +37,7 @@
                             {% else %}
                                 <div class="column left">
                             {% endif %}
+                            <li class="unsortable-item"> {{ key }} </li>
                                 <ul class="sortable-list">
                                     {% for case in value %}
                                         <li class="sortable-item">{{case}}</li>
