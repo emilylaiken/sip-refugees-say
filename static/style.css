@@ -1,3 +1,7 @@
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+
 .boxes {
 	width:100%;
     height:100px;
@@ -19,7 +23,6 @@
     display:inline-block;
     width:300px;
     vertical-align: top;
-    border:1px solid;
     line-height:80px;
     text-align:center;
     margin-bottom:4px;
@@ -36,10 +39,8 @@
 }
 .sortable-item{
 	background-color:#FFF;
-	border:1px solid #000;
 	cursor:move;
 	display:block;
-	font-weight:bold;
 	margin-bottom:5px;
 	padding:20px 0;
 	text-align:center;
@@ -52,7 +53,6 @@
 .unsortable-item{
 	color: #FFF;
 	background-color: #000;
-	border:1px solid #000;
 	display:block;
 	font-weight:bold;
 	margin-bottom:5px;
