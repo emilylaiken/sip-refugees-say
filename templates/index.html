@@ -6,39 +6,46 @@
         <link rel="stylesheet" type="text/css" href="static/style.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="static/examples.css" media="screen" />
     </head>
-    <body class="dhe-body">
+    <body class="body">
         <div id="center-wrapper">
-            <div id="dhe-article-info">
+            <div id="header">
                 <h1 class="dhe-h1">Algorithm Results</h1>
+                <div class="dhe-clearer">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="boxes">
+            <div class="dhe-example-descriptione-section-content">
+                <div id="example-1-2">
+                    {% for key, value in communities.items() %}
+                        <div class="column left">
+                        <li class="unsortable-item">
+                            {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
+                                {% if commkey == 'state'  or commkey == 'lon' %}
+                                , {{ commvalue }} <br/>
+                                {% elif commkey == 'lat' %}
+                                coordinates: {{ commvalue }}
+                                {% else %}
+                                {{ commkey }}: {{ commvalue }}
+                                {% endif %}
+                            {% endfor %}
+                        </li>
+                        <ul class="sortable-list">
+                            {% for casekey, casevalue in value.items() %}
+                                <li class="sortable-item">
+                                    {% for detailkey, detailvalue in casevalue.items() %}
+                                    {{ detailkey }}: {{ detailvalue }} <br/>
+                                    {% endfor %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        </div>
+                    {% endfor %}
                     <div class="dhe-clearer">&nbsp;</div>
                 </div>
             </div>
-            <div class="dhe-example-section" id="ex-1-2">
-                <div class="dhe-example-section-header">
-                    <h3 class="dhe-h3 dhe-example-title">Example 1.2: Sortable and connectable lists</h3>
-                    <div class="dhe-example-description">Drag and drop items within and between lists.</div>
-                </div>
-                <div class="dhe-example-descriptione-section-content">
-                    <div id="example-1-2">
-                        {% for key, value in communities.items() %}
-                            {% if key == 'Los Angeles' %}
-                                <div class="column left first">
-                            {% else %}
-                                <div class="column left">
-                            {% endif %}
-                            <li class="unsortable-item"> {{ key[1] }}, {{ key[0] }} </li>
-                                <ul class="sortable-list">
-                                    {% for case in value %}
-                                        <li class="sortable-item">{{case}}</li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                        {% endfor %}
-                        <div class="clearer">&nbsp;</div>
-                    </div>
-                </div>
-            </div>
         </div>
+
         <script type="text/javascript" src="static/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="static/jquery-ui-1.8.custom.min.js"></script>
         <script type="text/javascript">

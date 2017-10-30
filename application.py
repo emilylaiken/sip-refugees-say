@@ -1,4 +1,3 @@
-
 from flask import Flask, redirect, render_template, request, url_for, send_file, session
 import os
 import pandas as pd
@@ -8,25 +7,30 @@ import helpers
 
 app = Flask(__name__)
 
+sites = pd.read_csv('data/sites.csv')
+cases = pd.read_csv('data/cases.csv')
+output = pd.read_csv('data/output.csv')
+
 @app.route("/")
 def index():
-  sites_df = pd.read_csv('data/sites.csv')
-  cases_df = pd.read_csv('data/cases.csv')
-  output_df = pd.read_csv('data/output.csv')
+  # Assign by output.csv:
+  csvAssignment = helpers.CSVAlgo(cases, sites, output)
+  DictbySite = dict()
+  for city in sites['city']:
+    key = (city, sites[sites['city'] == city].iloc[0]['state'])
+    DictbySite[key] = csvAssignment.dictOfRefugees(city)
+  csvCommInfo = csvAssignment.dictOfCommunities()
 
-  cases = cases_df['name']
-  communities = list(zip(sites_df['state'].values.tolist(),sites_df['city'].values.tolist()))
-  def assign_case(groupName):
-    return communities[np.random.randint(0, len(communities))]
-  # Make assignments, keep lists by community
-  assignments_by_community = {}
-  for community in communities:
-    assignments_by_community[community] = []
-  for case in cases:
-    community = assign_case(case)
-    assignments_by_community[community].append(case)
-  # pass two dataframes to front end
-  return render_template('index.html', communities=assignments_by_community)
+  # Assign randomly:
+  randomAssignment = helpers.RandomAlgo(cases, sites)
+  for city in sites['city']:
+    randomAssignment.dictOfRefugees(city)
+  randAssignmentsByCommunity = randomAssignment.randDictbySite
+  randCommInfo = randomAssignment.dictOfCommunities()
+
+  # For CSV assignment: communities=DictbySite, comminfo=csvCommInfo
+  # For random assignment: communities=randAssignmentsByCommunity, comminfo=randCommInfo
+  return render_template('index.html', communities=randAssignmentsByCommunity, comminfo=randCommInfo)
 
 
 # Run application
