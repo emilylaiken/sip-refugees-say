@@ -23,7 +23,7 @@
                         <li class="unsortable-item">
                             {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
                                 {% if commkey == 'state'  or commkey == 'lon' %}
-                                , {{ commvalue }} <br/>
+                                , {{ commvalue }} 
                                 {% elif commkey == 'lat' %}
                                 coordinates: {{ commvalue }}
                                 {% else %}
@@ -35,7 +35,7 @@
                             {% for casekey, casevalue in value.items() %}
                                 <li class="sortable-item">
                                     {% for detailkey, detailvalue in casevalue.items() %}
-                                    {{ detailkey }}: {{ detailvalue }} <br/>
+                                    {{ detailkey }}: {{ detailvalue }} 
                                     {% endfor %}
                                 </li>
                             {% endfor %}

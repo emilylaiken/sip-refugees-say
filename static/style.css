@@ -1,5 +1,15 @@
+/* 
+   c1: #C08497;
+   c2: #F7AF9D;
+   c3: #B0D0D3;
+   c4: #FFCAD4;
+   c5: #FFFFFF;
+*/
+
 body {
 	font-family: 'Quicksand', sans-serif;
+	color: #8e9196;
+	background-color: #E8F1F2;
 }
 
 .boxes {
@@ -23,21 +33,24 @@ body {
     display:inline-block;
     width:300px;
     vertical-align: top;
-    line-height:80px;
+    line-height:40px;
     text-align:center;
     margin-bottom:4px;
+    border-radius: 7px;
 }
 .column.first{
 	margin-left:0;
 }
 .sortable-list{
-	background-color:#F93;
+	background-color: #FFCAD4;
 	list-style:none;
 	margin:0;
 	min-height:60px;
 	padding:10px;
+	border-radius: 7px;
 }
 .sortable-item{
+	border-radius: 7px;
 	background-color:#FFF;
 	cursor:move;
 	display:block;
@@ -52,12 +65,13 @@ body {
 }
 .unsortable-item{
 	color: #FFF;
-	background-color: #000;
+	background-color: #F7AF9D;
 	display:block;
 	font-weight:bold;
 	margin-bottom:5px;
 	padding:20px 0;
 	text-align:center;
+	border-radius: 7px;
 }
 #containment{
 	background-color:#FFA;
