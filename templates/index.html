@@ -26,9 +26,9 @@
                                 {% if commkey == 'state'  or commkey == 'lon' %}
                                 , {{ commvalue }} <br />
                                 {% elif commkey == 'lat' %}
-                                coordinates: {{ commvalue }}
+                                Coordinates: {{ commvalue }}
                                 {% else %}
-                                {{ commkey }}: {{ commvalue }}
+                                {{ commkey.capitalize() }}: {{ commvalue }}
                                 {% endif %}
                             {% endfor %}
                         </li>
@@ -36,7 +36,11 @@
                             {% for casekey, casevalue in value.items() %}
                                 <li class="sortable-item">
                                     {% for detailkey, detailvalue in casevalue.items() %}
-                                    {{ detailkey }}: {{ detailvalue }} <br />
+                                    {% if detailkey == 'languages' %}
+                                    {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }} <br/>
+                                    {% else %}
+                                    {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
+                                    {% endif %}
                                     {% endfor %}
                                 </li>
                             {% endfor %}

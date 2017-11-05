@@ -24,12 +24,15 @@ class MatchingAlgo:
 
     # Takes refugee group's name and returns dict of relevant info.
     def refugeesInfo(self):
-        return None
+        pass
 
     # Return all refugees from a particular community in a *dict dict*.
     def dictOfRefugees(self):
-        return None
+        pass
 
+
+
+# Randomly assigns cases to sites.
 def randomize(cases, sites):
     randDictbyName, randDictbySite = dict(), dict()
     for city in sites['city']:
@@ -41,6 +44,12 @@ def randomize(cases, sites):
         key = (city, sites[sites['city'] == city].iloc[0]['state'])
         randDictbySite[key][name] = None
     return randDictbyName, randDictbySite
+
+
+
+# Randomly assigns a score to case/site matches on a scale of 0 to 100.
+def randScore(groupName, groupComm):
+    return random.randint(0, 100)
 
 
 
@@ -57,6 +66,7 @@ class RandomAlgo(MatchingAlgo):
         languages = refDf.iloc[0]['languages']
         refugeesInfo['languages'] = languages.replace(" ", "").split(",")
         refugeesInfo['community'] = self.randDictbyName[groupName]
+        refugeesInfo['score'] = randScore(groupName, self.randDictbyName[groupName])
         return refugeesInfo
 
     def dictOfRefugees(self, city):
@@ -103,15 +113,10 @@ def main():
     cases1 = pd.read_csv('data/cases.csv')
     output1 = pd.read_csv('data/output.csv')
 
-    csv = CSVAlgo(cases1, sites1, output1)
+    csv = RandomAlgo(cases1, sites1)
 
     print(csv.refugeesInfo('Queen Finale Doshi-Velez'))
     print("")
-    print(csv.communityInfo('Bismarck', 'ND'))
-    print("")
-    print(csv.dictOfCommunities())
-    print("")
-    print(csv.dictOfRefugees('Cambridge'))
 
 if __name__ == '__main__':
     main()
