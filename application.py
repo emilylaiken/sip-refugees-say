@@ -3,6 +3,7 @@ import os
 import pandas as pd
 import numpy as np
 import helpers
+import json
 
 
 app = Flask(__name__)
@@ -27,10 +28,13 @@ def index():
     randomAssignment.dictOfRefugees(city)
   randAssignmentsByCommunity = randomAssignment.randDictbySite
   randCommInfo = randomAssignment.dictOfCommunities()
+  commList = []
+  for k, v in randCommInfo.items():
+      commList.append(v['city'])
 
   # For CSV assignment: communities=DictbySite, comminfo=csvCommInfo
   # For random assignment: communities=randAssignmentsByCommunity, comminfo=randCommInfo
-  return render_template('index.html', communities=randAssignmentsByCommunity, comminfo=randCommInfo)
+  return render_template('index.html', communities=randAssignmentsByCommunity, comminfo=randCommInfo, jCommList=json.dumps(commList))
 
 
 # Run application

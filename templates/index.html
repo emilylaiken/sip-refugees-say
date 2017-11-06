@@ -13,22 +13,36 @@
         <div id="center-wrapper">
             <div id="header">
                 <h1 class="dhe-h1">Algorithm Results</h1>
-                
-                 <script>
+
+                <script>
                 function displayButton(x) {
-                if(document.getElementById(x).className == "greenbutton") {
-                document.getElementById(x).className = "redbutton";
+                if(document.getElementById(x).style.display == 'inline') {
+                    document.getElementById(x).style.display = 'none';
                 }
-                else if(document.getElementById(x).className == "redbutton") {
-                document.getElementById(x).className = "greenbutton";
+                else {
+                    document.getElementById(x).style.display = 'inline';
                 }
             	}
+
+                function showHideAll(ele, x) {
+                    if(document.getElementById(ele).className == "greenbutton") {
+                document.getElementById(ele).className = "redbutton";
+                }
+                    if(document.getElementById(ele).className == "redbutton") {
+                document.getElementById(ele).className = "greenbutton";
+                }
+                    var commlist = {{ jCommList | safe }}
+                    for (i = 0; i < commlist.length; i++) {
+                        displayButton(commlist[i] + x)
+                    }
+                }
+
                 </script>
-                
-                	<input type="button" class="greenbutton" value="Total Capacity" id="totcap" onclick="displayButton('totcap')">
-               		<input type="button" class="greenbutton" value="Slots in Schools" id="schoolslots" onclick="displayButton('schoolslots')">
-                	<input type="button" class="greenbutton" value="Slots in ESL Classes" id="esl" onclick="displayButton('esl')">
-               
+
+                	<input type="button" class="greenbutton" value="Total Capacity" id="totcap" onclick="showHideAll('totcap', 'capacity')">
+               		<input type="button" class="greenbutton" value="Slots in Schools" id="schoolslots" onclick="showHideAll('schoolslots', 'schoolslots')">
+                	<input type="button" class="greenbutton" value="Slots in ESL Classes" id="esl" onclick="showHideAll('esl', 'eslslots')">
+
                 <div class="dhe-clearer">&nbsp;</div>
             </div>
         </div>
@@ -40,12 +54,20 @@
                         <div class="column left">
                         <li class="unsortable-item">
                             {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
-                                {% if commkey == 'state'  or commkey == 'lon' %}
+                                {% if commkey == 'state' %}
                                 , {{ commvalue }} <br />
-                                {% elif commkey == 'lat' %}
-                                Coordinates: {{ commvalue }}
-                                {% else %}
+                                {% elif commkey == 'city' %}
                                 {{ commkey.capitalize() }}: {{ commvalue }}
+                                {% else %}
+                                <span id={{ key[0] + commkey }} style="display: inline">
+                                {% if commkey == 'schoolslots'%}
+                                Slots in school: {{ commvalue }} <br/>
+                                {% elif commkey == 'eslslots' %}
+                                Slots in ESL classes: {{ commvalue }} <br/>
+                                {% else %}
+                                {{ commkey.capitalize() }}: {{ commvalue }} <br/>
+                                {% endif %}
+                                </span>
                                 {% endif %}
                             {% endfor %}
                         </li>

@@ -114,9 +114,9 @@ def main():
     output1 = pd.read_csv('data/output.csv')
 
     csv = RandomAlgo(cases1, sites1)
-
-    print(csv.refugeesInfo('Queen Finale Doshi-Velez'))
-    print("")
+    dd = csv.dictOfCommunities()
+    for k, v in dd.items():
+        print(v['city'])
 
 if __name__ == '__main__':
     main()
