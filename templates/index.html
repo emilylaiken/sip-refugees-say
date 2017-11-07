@@ -16,21 +16,21 @@
 
                 <script>
                 function displayButton(x) {
-                if(document.getElementById(x).style.display == 'inline') {
-                    document.getElementById(x).style.display = 'none';
-                }
-                else {
-                    document.getElementById(x).style.display = 'inline';
-                }
+                    if(document.getElementById(x).style.display == 'inline') {
+                        document.getElementById(x).style.display = 'none';
+                    }
+                    else {
+                        document.getElementById(x).style.display = 'inline';
+                    }
             	}
 
                 function showHideAll(ele, x) {
                     if(document.getElementById(ele).className == "greenbutton") {
-                document.getElementById(ele).className = "redbutton";
-                }
-                    if(document.getElementById(ele).className == "redbutton") {
-                document.getElementById(ele).className = "greenbutton";
-                }
+                        document.getElementById(ele).className = "redbutton";
+                    }
+                    else if(document.getElementById(ele).className == "redbutton") {
+                        document.getElementById(ele).className = "greenbutton";
+                    }
                     var commlist = {{ jCommList | safe }}
                     for (i = 0; i < commlist.length; i++) {
                         displayButton(commlist[i] + x)
