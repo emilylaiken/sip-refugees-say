@@ -40,4 +40,5 @@ def index():
 # Run application
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
+    app.jinja_env.filters['noSpace'] = helpers.noSpace
     app.run(host='0.0.0.0', port=port, debug=False)

@@ -31,9 +31,23 @@
                     else if(document.getElementById(ele).className == "redbutton") {
                         document.getElementById(ele).className = "greenbutton";
                     }
-                    var commlist = {{ jCommList | safe }}
+                    var commlist = {{ jCommList | safe | noSpace }}
                     for (i = 0; i < commlist.length; i++) {
                         displayButton(commlist[i] + x)
+                    }
+                }
+
+                function showHideDetails(casekey) {
+                    details = ['name', 'numberoffamilymembers', 'nationality', 'languages', 'community', 'score'];
+                    for (i =0; i < details.length; i++) {
+                        detail = details[i];
+                        divid = casekey + detail;
+                        if(document.getElementById(divid).style.display == "none") {
+                            document.getElementById(divid).style.display = "";
+                        }
+                        else {
+                            document.getElementById(divid).style.display = "none";
+                        }
                     }
                 }
 
@@ -59,7 +73,7 @@
                                 {% elif commkey == 'city' %}
                                 {{ commkey.capitalize() }}: {{ commvalue }}
                                 {% else %}
-                                <span id={{ key[0] + commkey }} style="display: inline">
+                                <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
                                 {% if commkey == 'schoolslots'%}
                                 Slots in school: {{ commvalue }} <br/>
                                 {% elif commkey == 'eslslots' %}
@@ -73,13 +87,27 @@
                         </li>
                         <ul class="sortable-list">
                             {% for casekey, casevalue in value.items() %}
-                                <li class="sortable-item">
+                                <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }}>
                                     {% for detailkey, detailvalue in casevalue.items() %}
-                                    {% if detailkey == 'languages' %}
-                                    {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }} <br/>
-                                    {% else %}
-                                    {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
-                                    {% endif %}
+                                        {% if detailkey == 'languages' %}
+                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }} <br/>
+                                            </span>
+                                        {% elif detailkey == 'name' %}
+                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                {{ detailkey.capitalize() }}: 
+                                            </span>
+                                            {{ detailvalue }} <br />
+                                        {% elif detailkey == 'score' %}
+                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                {{ detailkey.capitalize() }}: 
+                                            </span>
+                                            {{ detailvalue }} <br />
+                                        {% else %}
+                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
+                                            </span>
+                                        {% endif %}
                                     {% endfor %}
                                 </li>
                             {% endfor %}

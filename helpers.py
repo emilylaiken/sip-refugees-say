@@ -31,6 +31,13 @@ class MatchingAlgo:
         pass
 
 
+# Get rid of spaces in string
+def noSpace(string):
+    words = string.strip().split()
+    all_words = ""
+    for word in words:
+        all_words = all_words + word
+    return all_words.lower()
 
 # Randomly assigns cases to sites.
 def randomize(cases, sites):
@@ -108,7 +115,7 @@ class CSVAlgo(MatchingAlgo):
 
 
 # For testing.
-def main():
+def main2():
     sites1 = pd.read_csv('data/sites.csv')
     cases1 = pd.read_csv('data/cases.csv')
     output1 = pd.read_csv('data/output.csv')
@@ -117,6 +124,9 @@ def main():
     dd = csv.dictOfCommunities()
     for k, v in dd.items():
         print(v['city'])
+
+def main():
+    print(split_space('Hi my name'))
 
 if __name__ == '__main__':
     main()
