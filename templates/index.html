@@ -65,24 +65,23 @@
         <div class="boxes">
             <div class="dhe-example-descriptione-section-content">
                 <div id="example-1-2">
+
                     {% for key, value in communities.items() %}
                         <div class="column left">
                         <li class="unsortable-item">
                             {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
-                                {% if commkey == 'state' %}
-                                , {{ commvalue }} <br />
-                                {% elif commkey == 'city' %}
-                                {{ commkey.capitalize() }}: {{ commvalue }}
+                                {% if commkey == 'city' %}
+                                    {{ commkey.capitalize() }}: {{ commvalue }} <br/>
                                 {% else %}
-                                <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
-                                {% if commkey == 'schoolslots'%}
-                                Slots in school: {{ commvalue }} <br/>
-                                {% elif commkey == 'eslslots' %}
-                                Slots in ESL classes: {{ commvalue }} <br/>
-                                {% else %}
-                                {{ commkey.capitalize() }}: {{ commvalue }} <br/>
-                                {% endif %}
-                                </span>
+                                    <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
+                                    {% if commkey == 'schoolslots'%}
+                                        Slots in school: {{ commvalue }} <br/>
+                                    {% elif commkey == 'eslslots' %}
+                                        Slots in ESL classes: {{ commvalue }} <br/>
+                                    {% else %}
+                                         {{ commkey.capitalize() }}: {{ commvalue }} <br/>
+                                    {% endif %}
+                                    </span>
                                 {% endif %}
                             {% endfor %}
                         </li>
