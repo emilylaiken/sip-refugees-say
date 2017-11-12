@@ -65,59 +65,61 @@
         <div class="boxes">
             <div class="dhe-example-descriptione-section-content">
                 <div id="example-1-2">
-
                     {% for key, value in communities.items() %}
-                        <div class="column left">
-                        <li class="unsortable-item">
-                            {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
-                                {% if commkey == 'city' %}
-                                    {{ commkey.capitalize() }}: {{ commvalue }} <br/>
-                                {% else %}
-                                    <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
-                                    {% if commkey == 'schoolslots'%}
-                                        Slots in school: {{ commvalue }} <br/>
-                                    {% elif commkey == 'eslslots' %}
-                                        Slots in ESL classes: {{ commvalue }} <br/>
+                        
+                        <div class="column left"> 
+                            <li class="unsortable-item">
+                                {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
+                                    {% if commkey == 'city' %}
+                                        {{ commkey.capitalize() }}: {{ commvalue }} <br/>
                                     {% else %}
-                                         {{ commkey.capitalize() }}: {{ commvalue }} <br/>
-                                    {% endif %}
-                                    </span>
-                                {% endif %}
-                            {% endfor %}
-                        </li>
-                        <ul class="sortable-list">
-                            {% for casekey, casevalue in value.items() %}
-                                <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }}>
-                                    {% for detailkey, detailvalue in casevalue.items() %}
-                                        {% if detailkey == 'languages' %}
-                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }} <br/>
-                                            </span>
-                                        {% elif detailkey == 'name' %}
-                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                {{ detailkey.capitalize() }}: 
-                                            </span>
-                                            {{ detailvalue }} <br />
-                                        {% elif detailkey == 'score' %}
-                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                {{ detailkey.capitalize() }}: 
-                                            </span>
-                                            {{ detailvalue }} <br />
+                                        <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
+                                        {% if commkey == 'schoolslots'%}
+                                            Slots in school: {{ commvalue }} <br/>
+                                        {% elif commkey == 'eslslots' %}
+                                            Slots in ESL classes: {{ commvalue }} <br/>
                                         {% else %}
-                                            <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
-                                            </span>
+                                             {{ commkey.capitalize() }}: {{ commvalue }} <br/>
                                         {% endif %}
-                                    {% endfor %}
-                                </li>
-                            {% endfor %}
-                        </ul>
+                                        </span>
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                            <ul class="sortable-list">
+                                {% for casekey, casevalue in value.items() %}
+                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }}>
+                                        {% for detailkey, detailvalue in casevalue.items() %}
+                                            {% if detailkey == 'languages' %}
+                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                    {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }}
+                                                </span>
+                                            {% elif detailkey == 'name' %}
+                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                    {{ detailkey.capitalize() }}: 
+                                                </span>
+                                                {{ detailvalue }} <br />
+                                            {% elif detailkey == 'score' %}
+                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                    {{ detailkey.capitalize() }}: 
+                                                </span>
+                                                {{ detailvalue }} <br />
+                                            {% else %}
+                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                    {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
+                                                </span>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
                         </div>
+                        
                     {% endfor %}
                     <div class="dhe-clearer">&nbsp;</div>
                 </div>
             </div>
         </div>
+        
 
         <script type="text/javascript" src="static/jquery-1.4.2.min.js"></script>
         <script type="text/javascript" src="static/jquery-ui-1.8.custom.min.js"></script>
