@@ -1,11 +1,10 @@
-name,Number of Family Members,nationality,languages
-David JavaScript Malan,3,Tajikistan,"English, Tajiki"
-Queen Finale Doshi-Velez,0,Kosovo,Albanian
-Alan Turing,1,Scotland,English
-Sergey Google Brin,2,Venezuela,Spanish
-Mark Facebook Zuckerberg,0,Chad,"English, French"
-Billionaire Gates,0,Bhutan,"Dzongkha, English"
-Ryan Gosling,5,Belarus,Russian
-Mat Damon,0,North Korea,Korean
-Carol Hooven,3,Azerbaijan,"Azerbaijani, Russian, English"
-Drew Faust,1,Djibouti,French
+name,Number of Family Members,nationality,languages,singleparent
+Bruce Wayne,2,Gotham,English,N
+David JavaScript Malan,3,Tajikistan,"English, Tajiki",N
+Ryan Gosling,5,Belarus,Russian,Y
+Mat Damon,0,North Korea,Korean,N
+Carol Hooven,3,Azerbaijan,"Azerbaijani, Russian, English",N
+Drew Faust,1,Djibouti,French,Y
+Mark Facebook Zuckerberg,0,Chad,English,N
+Wonder Woman,4,Greece,"Greek, Latin, Hebrew",Y
+James Joyce,2,Ireland,"Irish, Welsh, French",N

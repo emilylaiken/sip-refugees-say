@@ -1,13 +1,22 @@
-city,state,capacity,schoolslots,eslslots
-Cambridge,MA,4,7,2
-Houston,TX,5,3,1
-Bismarck,ND,9,4,8
-Detroit,MI,10,2,0
-Orlando,FL,3,4,1
-San Francisco,CA,9,5,2
-Los Angeles,CA,2,7,4
-Davidson,NC,2,10,9
-Phoenix,AZ,5,3,1
-Boulder,CO,8,6,7
-Anchorage,AK,4,0,1
-Honolulu,HI,7,2,3
+city,state,capacity,schoolslots,eslslots,nationalities,stafflanguages,communitylanguages,largefamilysupport,singleparentsupport
+Ann Arbor,MI,4,7,2,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Buffalo,NY,5,3,1,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Charlotte,NC,9,4,8,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Chicago,IL,10,2,0,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Clearwater,FL,3,4,1,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Cleveland Heights,OH,9,5,2,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Colombus,OH,2,7,4,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Framingham,MA,2,10,9,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Kent,WA,5,3,1,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Los Gatos,CA,4,0,1,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Los Angeles,CA,8,6,7,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Madison,WI,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+New York City,NY,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
+Philadelphia,PA,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",Y,Y
+Pittsburgh,PA,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",Y,Y
+San Diego,CA,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",N,Y
+Springfield,MA,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",N,Y
+Toledo,OH,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",N,Y
+Walnut Creek,CA,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",N,Y
+Westchester County,NY,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",N,Y
+Wilmington,DE,7,2,3,"Morocco, Tajikistan","French, English","Greek, Latin",N,Y
