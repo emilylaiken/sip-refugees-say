@@ -14,13 +14,13 @@ output = pd.read_csv('data/output.csv')
 
 @app.route("/")
 def index():
-  # Assign by output.csv:
+  ''' Assign by output.csv:
   csvAssignment = helpers.CSVAlgo(cases, sites, output)
   DictbySite = dict()
   for city in sites['city']:
     key = (city, sites[sites['city'] == city].iloc[0]['state'])
     DictbySite[key] = csvAssignment.dictOfRefugees(city)
-  csvCommInfo = csvAssignment.dictOfCommunities()
+  csvCommInfo = csvAssignment.dictOfCommunities()'''
 
   # Assign randomly:
   randomAssignment = helpers.RandomAlgo(cases, sites)
