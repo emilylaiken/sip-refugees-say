@@ -88,7 +88,7 @@
                             <ul class="sortable-list">
                                 {% for casekey, casevalue in value.items() %}
                                     <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }} 
-                                    style={{'"padding:'|safe ~(casevalue['Number of Family Members'] * 15)|string|safe ~'px 0px"'|safe}}>
+                                    style={{'"padding:'|safe ~(casevalue['Number of Family Members'] * 25)|string|safe ~'px 0px"'|safe}}>
                                         {% for detailkey, detailvalue in casevalue.items() %}
                                             {% if detailkey == 'languages' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">

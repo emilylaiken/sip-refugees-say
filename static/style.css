@@ -52,6 +52,7 @@ body {
 	border-radius: 7px;
 }
 .sortable-item{
+	white-space: normal;
 	border-radius: 7px;
 	background-color:#FFF;
 	cursor:move;
