@@ -38,7 +38,6 @@ body {
     text-align:center;
     margin-bottom:4px;
     border-radius: 7px;
-    word-wrap: break-word;
 }
 .column.first{
 	margin-left:0;
@@ -68,6 +67,7 @@ body {
     white-space: nowrap;
 }
 .unsortable-item{
+	white-space: normal;
 	color: #FFF;
 	background-color: #F7AF9D;
 	display:block;
@@ -76,6 +76,7 @@ body {
 	padding:20px 0;
 	text-align:center;
 	border-radius: 7px;
+	word-wrap: break-word;
 }
 #containment{
 	background-color:#FFA;
