@@ -93,6 +93,7 @@
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
                                                     {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }}
                                                 </span>
+                                                <br />
                                             {% elif detailkey == 'name' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
                                                     {{ detailkey.capitalize() }}: 
@@ -107,6 +108,7 @@
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
                                                     {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
                                                 </span>
+                                            
                                             {% endif %}
                                         {% endfor %}
                                     </li>
