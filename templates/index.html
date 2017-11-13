@@ -71,7 +71,9 @@
                             <li class="unsortable-item">
                                 {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
                                     {% if commkey == 'city' %}
-                                        {{ commkey.capitalize() }}: {{ commvalue }} <br/>
+                                        <i> {{ commvalue }}  </i>
+                                    {% elif commkey == 'state' %}
+                                        <i> {{ commvalue }} </i> <br />
                                     {% else %}
                                         <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
                                         {% if commkey == 'schoolslots'%}
