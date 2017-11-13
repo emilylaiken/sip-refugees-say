@@ -38,7 +38,7 @@
                 }
 
                 function showHideDetails(casekey) {
-                    details = ['name', 'numberoffamilymembers', 'nationality', 'languages', 'community', 'score'];
+                    details = ['name', 'numberoffamilymembers', 'nationality', 'languages', 'community', 'score', 'singleparent'];
                     for (i =0; i < details.length; i++) {
                         detail = details[i];
                         divid = casekey + detail;
@@ -87,13 +87,15 @@
                             </li>
                             <ul class="sortable-list">
                                 {% for casekey, casevalue in value.items() %}
-                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }}>
+                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }} 
+                                    style={{'"padding:'|safe ~(casevalue['Number of Family Members'] * 15)|string|safe ~'px 0px"'|safe}}>
                                         {% for detailkey, detailvalue in casevalue.items() %}
                                             {% if detailkey == 'languages' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
                                                     {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }}
+                                                    <br />
                                                 </span>
-                                                <br />
+                                                
                                             {% elif detailkey == 'name' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
                                                     {{ detailkey.capitalize() }}: 
