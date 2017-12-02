@@ -1,10 +1,14 @@
-name,Number of Family Members,nationality,languages,singleparent
+name,num,nat,lang,sp
 Bruce Wayne,2,Gotham,English,N
 David JavaScript Malan,3,Tajikistan,"English, Tajiki",N
 Ryan Gosling,5,Belarus,Russian,Y
-Mat Damon,0,North Korea,Korean,N
+Mat Damon,1,North Korea,Korean,N
 Carol Hooven,3,Azerbaijan,"Azerbaijani, Russian, English",N
 Drew Faust,1,Djibouti,French,Y
-Mark Facebook Zuckerberg,0,Chad,English,N
+Mark Facebook Zuckerberg,1,Chad,English,N
 Wonder Woman,4,Greece,"Greek, Latin, Hebrew",Y
 James Joyce,2,Ireland,"Irish, Welsh, French",N
+Rachel Green,8,China,"Chinese, English",Y
+Ross Geller,7,Rwanda,"French, Rwandan, English",N
+Joey Tribiani,10,Italy,"Italian, English",Y
+Chandler Bing,6,South Africa,"Khosa, Afrikaans",N

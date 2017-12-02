@@ -39,6 +39,12 @@ def noSpace(string):
         all_words = all_words + word
     return all_words.lower()
 
+def getToolTip(key):
+    abbreviations={'cap':'Capacity', 'nats':'Nationalities supported', 'slang':'Staff languages', 'clang':'Community languages', 'lfs':'Large family support',
+                   'sps':'Single parent support', 'num':'Number in family', 'nat':'Nationality', 'lang':'Languages spoken', 'sp':'Single Parent',
+                   'score':'Community fit score'}
+    return abbreviations[key]
+
 # Randomly assigns cases to sites.
 def randomize(cases, sites):
     randDictbyName, randDictbySite = dict(), dict()
@@ -70,9 +76,9 @@ class RandomAlgo(MatchingAlgo):
         if refDf.empty:
             return None
         refugeesInfo = refDf.iloc[0].to_dict()
-        languages = refDf.iloc[0]['languages']
-        refugeesInfo['languages'] = languages.replace(" ", "").split(",")
-        refugeesInfo['community'] = self.randDictbyName[groupName]
+        languages = refDf.iloc[0]['lang']
+        refugeesInfo['lang'] = languages.replace(" ", "").split(",")
+        #refugeesInfo['community'] = self.randDictbyName[groupName]
         refugeesInfo['score'] = randScore(groupName, self.randDictbyName[groupName])
         return refugeesInfo
 
@@ -97,20 +103,20 @@ class CSVAlgo(MatchingAlgo):
         if refDf.empty:
             return None
         refugeesInfo = refDf.iloc[0].to_dict()
-        languages = refDf.iloc[0]['languages']
-        refugeesInfo['languages'] = languages.replace(" ", "").split(",")
-        for i in range(len(self.output.index)):
-            if self.output.iloc[i, 0] == groupName:
-                for j in range(len(self.output.columns)):
-                    if self.output.iloc[i, j] == 1:
-                        refugeesInfo['community'] = self.output.columns[j]
+        languages = refDf.iloc[0]['lang']
+        refugeesInfo['lang'] = languages.replace(" ", "").split(",")
+        #for i in range(len(self.output.index)):
+            #if self.output.iloc[i, 0] == groupName:
+                #for j in range(len(self.output.columns)):
+                    #if self.output.iloc[i, j] == 1:
+                        #refugeesInfo['community'] = self.output.columns[j]
         return refugeesInfo
 
     def dictOfRefugees(self, city):
         refD = dict()
-        for name in self.cases['name']:
-            if self.refugeesInfo(name)['community'] == city:
-                refD[name] = self.refugeesInfo(name)
+        #for name in self.cases['name']:
+            #if self.refugeesInfo(name)['community'] == city:
+                #refD[name] = self.refugeesInfo(name)
         return refD
 
 

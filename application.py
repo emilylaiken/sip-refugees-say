@@ -41,4 +41,5 @@ def index():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.jinja_env.filters['noSpace'] = helpers.noSpace
+    app.jinja_env.filters['toolTip'] = helpers.getToolTip
     app.run(host='0.0.0.0', port=port, debug=False)

@@ -1,4 +1,4 @@
-city,state,capacity,schoolslots,eslslots,nationalities,stafflanguages,communitylanguages,largefamilysupport,singleparentsupport
+city,state,cap,sslots,eslslots,nats,slang,clang,lfs,sps
 Ann Arbor,MI,4,7,2,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
 Buffalo,NY,5,3,1,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N
 Charlotte,NC,9,4,8,"Morocco, Tajikistan","French, English","Greek, Latin",Y,N

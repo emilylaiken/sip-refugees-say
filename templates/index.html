@@ -12,7 +12,7 @@
     <body class="body">
         <div id="center-wrapper">
             <div id="header">
-                <h1 class="dhe-h1">Algorithm Results</h1>
+                <h1 class="dhe-h1">Refugee Case Placements</h1>
 
                 <script>
                 function displayButton(x) {
@@ -38,7 +38,7 @@
                 }
 
                 function showHideDetails(casekey) {
-                    details = ['name', 'numberoffamilymembers', 'nationality', 'languages', 'community', 'score', 'singleparent'];
+                    details = ['num', 'nat', 'lang', 'score', 'sp'];
                     for (i =0; i < details.length; i++) {
                         detail = details[i];
                         divid = casekey + detail;
@@ -51,14 +51,23 @@
                     }
                 }
 
+                function showHideAspects(commkey) {
+                    details = ['cap', 'sslots', 'eslslots', 'nats', 'slang', 'clang', 'lfs', 'sps'];
+                    for (i =0; i < details.length; i++) {
+                        detail = details[i];
+                        divid = commkey + detail;
+                        if(document.getElementById(divid).style.display == "none") {
+                            document.getElementById(divid).style.display = "";
+                        }
+                        else {
+                            document.getElementById(divid).style.display = "none";
+                        }
+                    }
+                }
 
+          
                 </script>
 
-                	<input type="button" class="greenbutton" value="Total Capacity" id="totcap" onclick="showHideAll('totcap', 'capacity')">
-               		<input type="button" class="greenbutton" value="Slots in Schools" id="schoolslots" onclick="showHideAll('schoolslots', 'schoolslots')">
-                	<input type="button" class="greenbutton" value="Slots in ESL Classes" id="esl" onclick="showHideAll('esl', 'eslslots')">
-
-                <div class="dhe-clearer">&nbsp;</div>
             </div>
         </div>
 
@@ -68,51 +77,67 @@
                     {% for key, value in communities.items() %}
                         
                         <div class="column left"> 
-                            <li class="unsortable-item">
+                            <li class="unsortable-item" onclick={{ 'showHideAspects("'|safe ~ key[0]|noSpace~ '")'|safe }} >
                                 {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
                                     {% if commkey == 'city' %}
                                         <i> {{ commvalue }}  </i>
                                     {% elif commkey == 'state' %}
                                         <i> {{ commvalue }} </i> <br />
                                     {% else %}
-                                        <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: inline">
-                                        {% if commkey == 'schoolslots'%}
-                                            Slots in school: {{ commvalue }} <br/>
-                                        {% elif commkey == 'eslslots' %}
-                                            Slots in ESL classes: {{ commvalue }} <br/>
-                                        {% else %}
-                                             {{ commkey.capitalize() }}: {{ commvalue }} <br/>
-                                        {% endif %}
+                                        <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: none">
+                                            <div class="tooltip">
+                                                {% if commkey == 'sslots'%}
+                                                    School slots:
+                                                {% elif commkey == 'eslslots' %}
+                                                    ESL slots:
+                                                {% elif commkey == 'slang' %}
+                                                    S Lang:
+                                                {% elif commkey == 'clang' %}
+                                                    C Lang:
+                                                {% elif commkey == 'lfs' %}
+                                                    LFS:
+                                                {% elif commkey == 'sps' %}
+                                                    SPS:
+                                                {% else %}
+                                                     {{ commkey.capitalize() }}:
+                                                {% endif %}
+                                                {% if commkey != 'sslots' and commkey != 'eslslots' %}
+                                                    <span class="tooltiptext">{{commkey|toolTip}}</span>
+                                                {% endif %}
+                                            </div>
+                                             {{ commvalue }} <br/>
                                         </span>
                                     {% endif %}
                                 {% endfor %}
                             </li>
                             <ul class="sortable-list">
                                 {% for casekey, casevalue in value.items() %}
-                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }} 
-                                    style={{'"padding:'|safe ~(casevalue['Number of Family Members'] * 25)|string|safe ~'px 0px"'|safe}}>
+                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }} >
                                         {% for detailkey, detailvalue in casevalue.items() %}
-                                            {% if detailkey == 'languages' %}
+                                            {% if detailkey == 'lang' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    {{ detailkey.capitalize() }}: {{ ', '.join(detailvalue) }}
+                                                    <div class="tooltip"> {{ detailkey.capitalize() }}: <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
+                                                    {{ ', '.join(detailvalue) }}
                                                     <br />
                                                 </span>
-                                                
-                                            {% elif detailkey == 'name' %}
+                                            {% elif detailkey == 'sp' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    {{ detailkey.capitalize() }}: 
+                                                    <div class="tooltip"> SP: <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
+                                                    {{ ', '.join(detailvalue) }}
+                                                    <br />
                                                 </span>
-                                                {{ detailvalue }} <br />
+                                            {% elif detailkey == 'name' %}
+                                                <font color='#F7AF9D'> {{ detailvalue }} </font> <br />
                                             {% elif detailkey == 'score' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    {{ detailkey.capitalize() }}: 
+                                                    <div class="tooltip"> {{ detailkey.capitalize() }}:  <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
                                                 </span>
                                                 {{ detailvalue }} <br />
                                             {% else %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    {{ detailkey.capitalize() }}: {{ detailvalue }} <br />
+                                                    <div class="tooltip"> {{ detailkey.capitalize() }}:  <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
+                                                    {{ detailvalue }} <br />
                                                 </span>
-                                            
                                             {% endif %}
                                         {% endfor %}
                                     </li>
