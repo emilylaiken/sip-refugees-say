@@ -69,12 +69,6 @@ def randScore(groupName, groupComm):
 def randScore():
     return random.randint(0, 100)
 
-def aggScore():
-    return np.mean
-
-
-
-
 class RandomAlgo(MatchingAlgo):
     def __init__(self, cases, sites):
         MatchingAlgo.__init__(self, cases, sites)

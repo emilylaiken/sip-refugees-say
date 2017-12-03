@@ -39,7 +39,7 @@
                 }
 
                 function showHideDetails(casekey) {
-                    details = ['num', 'nat', 'lang', 'score', 'sp'];
+                    details = ['lang', 'sp'];
                     for (i =0; i < details.length; i++) {
                         detail = details[i];
                         divid = casekey + detail;
@@ -53,7 +53,7 @@
                 }
 
                 function showHideAspects(commkey) {
-                    details = ['cap', 'sslots', 'eslslots', 'nats', 'slang', 'clang', 'lfs', 'sps'];
+                    details = ['sslots', 'eslslots', 'nats', 'slang', 'clang', 'lfs', 'sps'];
                     for (i =0; i < details.length; i++) {
                         detail = details[i];
                         divid = commkey + detail;
@@ -80,9 +80,11 @@
                             <li class="unsortable-item" onclick={{ 'showHideAspects("'|safe ~ key[0]|noSpace~ '")'|safe }} >
                                 {% for commkey, commvalue in comminfo[key[0] + ", " + key[1]].items() %}
                                     {% if commkey == 'city' %}
-                                        <i> {{ commvalue }}  </i>
+                                        <i> {{ commvalue }}</i>
                                     {% elif commkey == 'state' %}
-                                        <i> {{ commvalue }} </i> <br />
+                                        <i>, {{ commvalue }} </i> 
+                                    {% elif commkey == 'cap' %}
+                                        <i> ({{ commvalue }}) </i> <br />
                                     {% else %}
                                         <span id={{ key[0] | noSpace ~ commkey | noSpace}} style="display: none">
                                             <div class="tooltip">
@@ -112,32 +114,31 @@
                             </li>
                             <ul class="sortable-list" ondrop=drop(event)>
                                 {% for casekey, casevalue in value.items() %}
-                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }} ondrag=drop(event)>
+                                    <li class="sortable-item" onclick={{ 'showHideDetails("'|safe ~ casekey|noSpace~ '")'|safe }} >
+                                        <font color="#F7AF9D">
+                                        {{ casevalue['name'] }} <div class="tooltip"> ({{ casevalue['num'] }}) <span class="tooltiptext">{{ 'num'|toolTip}} </span></div> : <div class="tooltip"><span class='score'> {{ score() }} </span><span class="tooltiptext">{{ 'score'|toolTip}} </span></div><br /></font>
+
+                                        <div class="tooltip"> {{ casevalue['nat'] }} <span class="tooltiptext">{{ 'nat'|toolTip }} </span></div> <br />
                                         {% for detailkey, detailvalue in casevalue.items() %}
                                             {% if detailkey == 'lang' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    <div class="tooltip"> {{ detailkey.capitalize() }}: <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
+                                                    <div class="tooltip"><span class="tooltiptext">{{detailkey|toolTip}}</span></div>
                                                     {{ ', '.join(detailvalue) }}
                                                     <br />
                                                 </span>
                                             {% elif detailkey == 'sp' %}
-                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    <div class="tooltip"> SP: <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
-                                                    {{ ', '.join(detailvalue) }}
-                                                    <br />
-                                                </span>
-                                            {% elif detailkey == 'name' %}
-                                                <font color='#F7AF9D'> {{ detailvalue }} </font> <br />
-                                            {% elif detailkey == 'score' %}
-                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    <div class="tooltip"> {{ detailkey.capitalize() }}:  <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
-                                                </span>
-                                                <span class='score'> {{ score() }} </span><br /> 
-                                            {% else %}
-                                                <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    <div class="tooltip"> {{ detailkey.capitalize() }}:  <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
-                                                    {{ detailvalue }} <br />
-                                                </span>
+
+                                                {% if detailvalue == "Y" %}
+                                                    <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                        <div class="tooltip"> Single Parent Support <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
+                                                        <br />
+                                                    </span>
+                                                {% else %}
+                                                    <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
+                                                        <div class="tooltip"> No Single Parent Support <span class="tooltiptext">{{detailkey|toolTip}}</span></div>
+                                                        <br />
+                                                    </span>
+                                                {% endif %}
                                             {% endif %}
                                         {% endfor %}
                                     </li>
