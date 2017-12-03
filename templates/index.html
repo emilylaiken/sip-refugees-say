@@ -122,12 +122,10 @@
                                         {% for detailkey, detailvalue in casevalue.items() %}
                                             {% if detailkey == 'lang' %}
                                                 <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
-                                                    <div class="tooltip"><span class="tooltiptext">{{detailkey|toolTip}}</span></div>
-                                                    {{ ', '.join(detailvalue) }}
+                                                    <div class="tooltip">{{ ', '.join(detailvalue) }}<span class="tooltiptext">{{detailkey|toolTip}}</span></div>
                                                     <br />
                                                 </span>
                                             {% elif detailkey == 'sp' %}
-
                                                 {% if detailvalue == "Y" %}
                                                     <span id={{casekey|noSpace ~ detailkey|noSpace}} style="display: none">
                                                         <div class="tooltip"> Single Parent Support <span class="tooltiptext">{{detailkey|toolTip}}</span></div>

@@ -124,8 +124,8 @@ body {
     /* Position the tooltip text */
     position: absolute;
     z-index: 1;
-    top: -5px;
-    right: 155%; 
+    top: -7px;
+    right: 115%; 
 
     /* Fade in tooltip */
     opacity: 0;
