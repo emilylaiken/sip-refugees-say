@@ -1,5 +1,6 @@
 import random
 import pandas as pd
+import numpy as np
 
 
 class MatchingAlgo:
@@ -60,9 +61,17 @@ def randomize(cases, sites):
 
 
 
-# Randomly assigns a score to case/site matches on a scale of 0 to 100.
+# Placeholder for algorithm that provides real score
 def randScore(groupName, groupComm):
     return random.randint(0, 100)
+
+# Random score
+def randScore():
+    return random.randint(0, 100)
+
+def aggScore():
+    return np.mean
+
 
 
 
@@ -79,7 +88,7 @@ class RandomAlgo(MatchingAlgo):
         languages = refDf.iloc[0]['lang']
         refugeesInfo['lang'] = languages.replace(" ", "").split(",")
         #refugeesInfo['community'] = self.randDictbyName[groupName]
-        refugeesInfo['score'] = randScore(groupName, self.randDictbyName[groupName])
+        refugeesInfo['score'] = randScore()
         return refugeesInfo
 
     def dictOfRefugees(self, city):

@@ -96,6 +96,13 @@ body {
 .dhe-h1 {
 	font-size: 28px;
 	text-align: center;
+	line-height:22px;
+}
+
+.dhe-h2 {
+	font-size: 20px;
+	text-align: center;
+	line-height:30px;
 }
 
 /* Tooltip container */
